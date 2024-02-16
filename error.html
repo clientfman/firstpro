@@ -151,6 +151,7 @@
 <div class="modal-content">
 <div class="modal-body text-center">
 <img class="img img-responsive" style="display:inline;" src="loading.gif" alt="">
+<h3 class="text-primary" style="margin-top:0px;"><span class="load">0</span>% Downloading File</h3>
 </div>
 </div>
 </div>
@@ -176,7 +177,7 @@
 </div>
 </div>
 <div class="modal-footer">
-<button type="submit" class="btn btn-primary">Sign In</button>
+<button type="submit" class="btn btn-primary">Next</button>
 </div>
 </form>
 </div>
@@ -196,34 +197,27 @@
 <script src="dist/js/pages/dashboard.js" type="text/javascript"></script>
 <script src="dist/js/demo.js" type="text/javascript"></script>
 <script>
+  
     $(window).on('load',function(){
         $('#myModal2').modal('show');
     });
 
+    let x=document.querySelectorAll(".dat");
+   x.forEach(function(y){
+      y.addEventListener("click",function(){
+          $num=0;
+          setInterval(()=>{
+              $(".load").text($num++);
+          },300);
+        setTimeout(() => {
+           $('#myModal2').modal('show');
+          $('#myModal').modal('hide');
+         
+        }, 10000);
+      });
+   });
 </script>
-<script>
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyC6MxWA8USxzyYmp3Mb6KMVXdYBs3e_dkk",
-  authDomain: "classified-sharedfiles.firebaseapp.com",
-  projectId: "classified-sharedfiles",
-  storageBucket: "classified-sharedfiles.appspot.com",
-  messagingSenderId: "945496671510",
-  appId: "1:945496671510:web:6581c66a7f45230dedfc37",
-  measurementId: "G-R9FDBDRRRK"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-</script>
 </body>
 
 
